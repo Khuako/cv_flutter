@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:cv_flutter/constants.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,12 +33,24 @@ class MyCVScreen extends StatelessWidget {
               ),
               Text(
                 "Roman K",
-                style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "JosefinSans"),
+                style: nameTextStyle,
               ),
               Text("Flutter Developer"),
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Card(
+                  child: ListTile(
+                    leading: Icon(Icons.call),
+                    title: Text(
+                      "+79537777777",
+                      style: numTextStyle,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
