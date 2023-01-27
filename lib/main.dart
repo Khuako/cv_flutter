@@ -51,6 +51,51 @@ class MyCVScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Card(
+                  child: ListTile(
+                    leading: Icon(Icons.email),
+                    title: Text(
+                      "pilipop1111@gmail.com",
+                      style: numTextStyle,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 25),
+                      child: Column(
+                        children: [
+                          Text("Education"),
+                          Text("KubSU, Krasnodar"),
+                          Text("Liceum 90, Krasnodar"),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 25),
+                      child: Column(
+                        children: [
+                          Text("Work Expirience"),
+                          Text("Flutter Developer"),
+                          Text("Anime Watcher")
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
