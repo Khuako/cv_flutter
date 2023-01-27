@@ -66,35 +66,54 @@ class MyCVScreen extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 25),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
                       child: Column(
                         children: [
-                          Text("Education"),
-                          Text("KubSU, Krasnodar"),
-                          Text("Liceum 90, Krasnodar"),
+                          Text(
+                            "Education",
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "KubSU, Krasnodar",
+                            style: eduTextStyle,
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "Liceum 90, Krasnodar",
+                            style: eduTextStyle,
+                            textAlign: TextAlign.center,
+                          ),
                         ],
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 25),
+                    Expanded(
                       child: Column(
                         children: [
-                          Text("Work Expirience"),
-                          Text("Flutter Developer"),
-                          Text("Anime Watcher")
+                          Text(
+                            "Work Experience",
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "Flutter Developer",
+                            style: eduTextStyle,
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "Anime Watcher",
+                            style: eduTextStyle,
+                            textAlign: TextAlign.center,
+                          )
                         ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
