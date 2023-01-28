@@ -85,7 +85,7 @@ class MyCVScreen extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           Text(
-                            "Liceum 90, Krasnodar",
+                            "Oxford University, Oxford",
                             style: eduTextStyle,
                             textAlign: TextAlign.center,
                           ),
