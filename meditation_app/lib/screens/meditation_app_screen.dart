@@ -1,5 +1,7 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter/material.dart';
 import 'package:meditation_app/models/item_model.dart';
@@ -13,30 +15,40 @@ class _MeditationAppScreenState extends State<MeditationAppScreen> {
   final List<Item> items = [
     Item(
       name: "Forest",
-      audioPath: "meditation_audios/forest.mp3",
+      audioPath: "auds/forest.mp3",
       ImagePath: "assets/forest.jpeg",
     ),
     Item(
       name: "Night",
-      audioPath: "meditation_audios/night.mp3",
+      audioPath: "auds/nightt.mp3",
       ImagePath: "assets/night.jpeg",
     ),
     Item(
       name: "Ocean",
-      audioPath: "meditation_audios/ocean.mp3",
+      audioPath: "auds/ocean.mp3",
       ImagePath: "assets/ocean.jpeg",
     ),
     Item(
       name: "Waterfall",
-      audioPath: "meditation_audios/waterfall.mp3",
+      audioPath: "auds/waterfall.mp3",
       ImagePath: "assets/waterfall.jpeg",
     ),
     Item(
       name: "Wind",
-      audioPath: "meditation_audios/wind.mp3",
+      audioPath: "auds/wind.mp3",
       ImagePath: "assets/wind.jpeg",
     ),
   ];
+  final AudioPlayer audioPlayer = AudioPlayer();
+
+  int? playingIndex;
+
+  // Widget showIcon(int currentIndex) {
+  //   if (playingIndex == currentIndex) {
+  //     return FaIcon(FontAwesomeIcons.stop);
+  //   } else
+  //     return FaIcon(FontAwesomeIcons.play);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +73,36 @@ class _MeditationAppScreenState extends State<MeditationAppScreen> {
                   child: ListTile(
                     title: Text(items[index].name),
                     leading: IconButton(
-                      icon: Icon(Icons.play_arrow),
-                      onPressed: () {},
-                    ),
+                        icon: playingIndex == index
+                            ? FaIcon(FontAwesomeIcons.stop)
+                            : FaIcon(FontAwesomeIcons.play),
+                        onPressed: () async {
+                          if (playingIndex == index) {
+                            setState(() {
+                              playingIndex = null;
+                            });
+                            audioPlayer.stop();
+                          } else {
+                            try {
+                              await audioPlayer
+                                  .setAsset(items[index].audioPath)
+                                  .catchError((onError) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content:
+                                        Text("Oops... an error has occured"),
+                                  ),
+                                );
+                              });
+                              audioPlayer.play();
+                              setState(() {
+                                playingIndex = index;
+                              });
+                            } catch (error) {
+                              print(error);
+                            }
+                          }
+                        }),
                   ),
                 ),
               );
