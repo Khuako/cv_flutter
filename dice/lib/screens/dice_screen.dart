@@ -40,11 +40,13 @@ class _diceScreenState extends State<diceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              Container(
-                height: 250,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Container(
+                height: 200,
+                width: 350,
                 child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2),
@@ -56,41 +58,44 @@ class _diceScreenState extends State<diceScreen> {
                       );
                     }),
               ),
-              Container(
-                width: 100,
-                child: ElevatedButton(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      "ROLL",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+            ),
+            SizedBox(
+              height: 80,
+            ),
+            Container(
+              width: 100,
+              child: ElevatedButton(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    "ROLL",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
                     ),
                   ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(13),
-                      ),
-                    ),
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromRGBO(
-                        221,
-                        81,
-                        80,
-                        1,
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    rollCubes();
-                  },
                 ),
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(13),
+                    ),
+                  ),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Color.fromRGBO(
+                      221,
+                      81,
+                      80,
+                      1,
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  rollCubes();
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
