@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_project_1/Theme/app_colors.dart';
+import 'package:flutter_project_1/main_screen/main_screen_widget.dart';
 import 'package:flutter_project_1/widgets/auth/auth_widget.dart';
 
 void main() {
@@ -16,10 +18,24 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          backgroundColor: const Color.fromRGBO(0, 51, 102, 1),
+          backgroundColor: AppColors.mainDarkBlue,
+        ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: AppColors.mainDarkBlue,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
         ),
       ),
-      home: AuthWidget(),
+      routes: {
+        '/auth': (context) => AuthWidget(),
+        '/main_screen': (context) => MainScreenWidget(),
+      },
+      initialRoute: '/auth',
+      onGenerateRoute: ((settings) {
+        return MaterialPageRoute<void>(builder: (context) {
+          return Text('dd1111');
+        });
+      }),
     );
   }
 }
