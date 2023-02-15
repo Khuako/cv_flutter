@@ -176,7 +176,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           child: TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              labelText: 'Поиск',
+              prefixIcon: Icon(Icons.search),
               filled: true,
               fillColor: Colors.white.withAlpha(235),
               border: OutlineInputBorder(),
