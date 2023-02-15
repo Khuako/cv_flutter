@@ -7,13 +7,15 @@ import 'package:flutter_project_1/resources/resources.dart';
 import 'package:flutter_project_1/widgets/auth_widget.dart';
 
 class Movie {
+  final int id;
   final String imageName;
   final String title;
   final String time;
   final String description;
 
   Movie(
-      {required this.imageName,
+      {required this.id,
+      required this.imageName,
       required this.title,
       required this.time,
       required this.description});
@@ -27,36 +29,42 @@ class MovieListWidget extends StatefulWidget {
 class _MovieListWidgetState extends State<MovieListWidget> {
   final _movies = [
     Movie(
+        id: 1,
         imageName: AppImages.yourname,
         title: "Your name",
         time: 'July 6,2016',
         description:
             'Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?'),
     Movie(
+        id: 2,
         imageName: AppImages.yourname,
         title: "Kimetsu no Yaiba",
         time: 'July 6,2016',
         description:
             'Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?'),
     Movie(
+        id: 3,
         imageName: AppImages.yourname,
         title: "Naruto",
         time: 'July 6,2016',
         description:
             'Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?'),
     Movie(
+        id: 4,
         imageName: AppImages.yourname,
         title: "One Piece",
         time: 'July 6,2016',
         description:
             'Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?'),
     Movie(
+        id: 5,
         imageName: AppImages.yourname,
         title: "Berserk",
         time: 'July 6,2016',
         description:
             'Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?'),
     Movie(
+        id: 6,
         imageName: AppImages.yourname,
         title: "Bleach",
         time: 'July 6,2016',
@@ -81,6 +89,12 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     super.initState();
     _filteredMovies = _movies;
     _searchController.addListener(_searchMovies);
+  }
+
+  void _onMovieTap(int index) {
+    final id = _movies[index].id;
+    Navigator.of(context)
+        .pushNamed('/main_screen/movie_details', arguments: id);
   }
 
   final _searchController = TextEditingController();
@@ -162,9 +176,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                   Material(
                       color: Colors.transparent,
                       child: InkWell(
-                        onTap: () {
-                          print('11');
-                        },
+                        onTap: () => _onMovieTap(index),
                       ))
                 ],
               ),
