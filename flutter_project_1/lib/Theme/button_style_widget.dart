@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_1/widgets/auth/auth_widget.dart';
+import 'package:flutter_project_1/widgets/auth_widget.dart';
 
 abstract class AppButtonStyle {
   static final ButtonStyle linkButton = ButtonStyle(

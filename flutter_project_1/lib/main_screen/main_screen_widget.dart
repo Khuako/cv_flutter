@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_project_1/Theme/app_colors.dart';
+import 'package:flutter_project_1/widgets/movie_list_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({super.key});
@@ -14,7 +16,18 @@ class MainScreenWidget extends StatefulWidget {
 class _MainScreenWidget extends State<MainScreenWidget> {
   int _selectedIndex = 0;
 
+  // static final List<Widget> _widgetOptions = <Widget>[
+  //   Text(
+  //     "Новости",
+  //   ),
+  //   MovieListWidget(),
+  //   Text(
+  //     "Сериалы",
+  //   ),
+  // ];
+
   void onSelectTab(int index) {
+    if (_selectedIndex == index) return;
     setState(() {
       _selectedIndex = index;
     });
@@ -24,7 +37,19 @@ class _MainScreenWidget extends State<MainScreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("TMDB"),
+        title: Text("TADB"),
+      ),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          Text(
+            "Новости",
+          ),
+          MovieListWidget(),
+          Text(
+            "Сериалы",
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,

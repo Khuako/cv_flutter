@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_1/Theme/app_colors.dart';
 import 'package:flutter_project_1/main_screen/main_screen_widget.dart';
-import 'package:flutter_project_1/widgets/auth/auth_widget.dart';
+import 'package:flutter_project_1/widgets/auth_widget.dart';
 
 void main() {
   runApp(const MyApp());
