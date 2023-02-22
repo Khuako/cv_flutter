@@ -15,22 +15,27 @@ class MovieDetailsMainInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          _TopPosterWidget(),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: _MovieNameWidget(),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 70),
-            child: _SummeryWidget(),
-          ),
-          _ScoreWidget(),
-          _DescrWidget(),
-        ],
-      ),
+    return Column(
+      children: [
+        _TopPosterWidget(),
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: _MovieNameWidget(),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 70),
+          child: _SummeryWidget(),
+        ),
+        _ScoreWidget(),
+        SizedBox(
+          height: 30,
+        ),
+        _DescrWidget(),
+        SizedBox(
+          height: 30,
+        ),
+        _PeopleWidgets(),
+      ],
     );
   }
 }
@@ -163,8 +168,23 @@ class _SummeryWidget extends StatelessWidget {
 class _DescrWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return containterbox(
+      child: Text(
+        'Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?',
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+}
+
+class containterbox extends StatelessWidget {
+  final Widget child;
+  containterbox({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.mainDarkBlue,
@@ -175,12 +195,84 @@ class _DescrWidget extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.all(8),
-          child: Text(
-            'Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?',
-            style: TextStyle(color: Colors.white),
-          ),
+          child: child,
         ),
       ),
+    );
+  }
+}
+
+class _PeopleWidgets extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        containterbox(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Makoto Shinkai',
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Text(
+                'Director',
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Clark Cheng',
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Text(
+                'Writer',
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+        containterbox(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Makoto Shinkai',
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Text(
+                'Director',
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Clark Cheng',
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Text(
+                'Writer',
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

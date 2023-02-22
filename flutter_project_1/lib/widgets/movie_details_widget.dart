@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_project_1/widgets/movie_details_main_info_widget.dart';
 
+import 'movie_screen_cast_widget.dart';
+
 class MovieDetailsWidget extends StatefulWidget {
   final int movieId;
   const MovieDetailsWidget({super.key, required this.movieId});
@@ -23,6 +25,10 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
         child: ListView(
           children: [
             MovieDetailsMainInfoWidget(),
+            SizedBox(
+              height: 30,
+            ),
+            MovieDetailsMainScreenCastWidget(),
           ],
         ),
       ),
