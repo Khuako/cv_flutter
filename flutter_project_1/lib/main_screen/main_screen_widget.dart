@@ -16,15 +16,6 @@ class MainScreenWidget extends StatefulWidget {
 class _MainScreenWidget extends State<MainScreenWidget> {
   int _selectedIndex = 0;
 
-  // static final List<Widget> _widgetOptions = <Widget>[
-  //   Text(
-  //     "Новости",
-  //   ),
-  //   MovieListWidget(),
-  //   Text(
-  //     "Сериалы",
-  //   ),
-  // ];
 
   void onSelectTab(int index) {
     if (_selectedIndex == index) return;

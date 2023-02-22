@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_project_1/resources/resources.dart';
+import 'package:flutter_project_1/widgets/radial_percent_widget.dart';
 
 class MovieDetailsMainInfoWidget extends StatelessWidget {
   const MovieDetailsMainInfoWidget({super.key});
@@ -90,6 +91,20 @@ class _ScoreWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
+        SizedBox(
+          width: 40,
+          height: 40,
+          child: RadialPercentWidget(
+              child: Text(
+                '88',
+                style: TextStyle(color: Colors.blue),
+              ),
+              percent: 0.88,
+              fillColor: Color.fromARGB(255, 10, 23, 25),
+              lineColor: Color.fromARGB(255, 37, 203, 103),
+              freeColor: Color.fromARGB(255, 25, 54, 31),
+              lineWidth: 3),
+        ),
         TextButton(
           onPressed: () {},
           child: Text('User Score'),
