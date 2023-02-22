@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_project_1/Theme/app_colors.dart';
 import 'package:flutter_project_1/resources/resources.dart';
 import 'package:flutter_project_1/widgets/radial_percent_widget.dart';
 
@@ -14,19 +15,22 @@ class MovieDetailsMainInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _TopPosterWidget(),
-        Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: _MovieNameWidget(),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 70),
-          child: _SummeryWidget(),
-        ),
-        _ScoreWidget(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          _TopPosterWidget(),
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: _MovieNameWidget(),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 70),
+            child: _SummeryWidget(),
+          ),
+          _ScoreWidget(),
+          _DescrWidget(),
+        ],
+      ),
     );
   }
 }
@@ -91,23 +95,27 @@ class _ScoreWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        SizedBox(
-          width: 40,
-          height: 40,
-          child: RadialPercentWidget(
-              child: Text(
-                '88',
-                style: TextStyle(color: Colors.blue),
-              ),
-              percent: 0.88,
-              fillColor: Color.fromARGB(255, 10, 23, 25),
-              lineColor: Color.fromARGB(255, 37, 203, 103),
-              freeColor: Color.fromARGB(255, 25, 54, 31),
-              lineWidth: 3),
-        ),
-        TextButton(
-          onPressed: () {},
-          child: Text('User Score'),
+        Row(
+          children: [
+            SizedBox(
+              width: 50,
+              height: 50,
+              child: RadialPercentWidget(
+                  child: Text(
+                    '88',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                  percent: 0.88,
+                  fillColor: Color.fromARGB(255, 10, 23, 25),
+                  lineColor: Color.fromARGB(255, 37, 203, 103),
+                  freeColor: Color.fromARGB(255, 25, 54, 31),
+                  lineWidth: 3),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text('User Score'),
+            ),
+          ],
         ),
         Container(
           color: Colors.grey,
@@ -147,6 +155,31 @@ class _SummeryWidget extends StatelessWidget {
           color: Colors.white,
         ),
         maxLines: 2,
+      ),
+    );
+  }
+}
+
+class _DescrWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(25.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.mainDarkBlue,
+          border: Border.all(),
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(8),
+          child: Text(
+            'Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
       ),
     );
   }
