@@ -1,4 +1,4 @@
-import 'package:dice/screens/dice_screen.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         scaffoldBackgroundColor: Color.fromRGBO(253, 165, 164, 1),
       ),
-      home: diceScreen(),
     );
   }
 }
