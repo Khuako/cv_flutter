@@ -111,7 +111,7 @@ class WeatherList {
   late double speed;
   late int deg;
   late int clouds;
-  late double rain;
+  // late double? rain;
 
   WeatherList({
     required this.dt,
@@ -125,7 +125,7 @@ class WeatherList {
     required this.speed,
     required this.deg,
     required this.clouds,
-    required this.rain,
+    // required this.rain,
   });
 
   WeatherList.fromJson(Map<String, dynamic> json) {
@@ -147,7 +147,7 @@ class WeatherList {
     speed = json['speed'].toDouble();
     deg = json['deg'];
     clouds = json['clouds'];
-    rain = json['rain'];
+    // rain = json['rain'];
   }
 
   Map<String, dynamic> toJson() {
@@ -163,7 +163,7 @@ class WeatherList {
     data['speed'] = speed;
     data['deg'] = deg;
     data['clouds'] = clouds;
-    data['rain'] = rain;
+    // data['rain'] = rain;
     return data;
   }
 

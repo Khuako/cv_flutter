@@ -34,7 +34,7 @@ class TempView extends StatelessWidget {
               ),
               Text(
                 '$description',
-                style: TextStyle(fontSize: 18, color: Colors.black87),
+                style: const TextStyle(fontSize: 18, color: Colors.black87),
               )
             ],
           ),
