@@ -11,10 +11,8 @@ class Group extends HiveObject {
   HiveList<Task>? tasks;
   Group({required this.name});
   void addTask(Box<Task> box, Task task) {
-    if (tasks == null) {
-      tasks ??= HiveList(box);
-      tasks?.add(task);
-      save();
-    }
+    tasks ??= HiveList(box);
+    tasks?.add(task);
+    save();
   }
 }

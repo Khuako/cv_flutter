@@ -95,9 +95,7 @@ class _TaskListRowWidget extends StatelessWidget {
         children: [
           SlidableAction(
             padding: EdgeInsets.symmetric(horizontal: 12),
-            onPressed: (context) => TasksWidgetModelProvider.read(context)
-                ?.model
-                .deleteTask(indexInList),
+            onPressed: null,
             backgroundColor: Color(0xFFFE4A49),
             foregroundColor: Colors.white,
             icon: Icons.delete,

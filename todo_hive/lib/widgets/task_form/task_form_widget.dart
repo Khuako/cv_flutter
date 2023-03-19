@@ -64,8 +64,8 @@ class _TaskTextWidget extends StatelessWidget {
         maxLines: null,
         expands: true,
         autofocus: true,
-        decoration:
-            InputDecoration(border: InputBorder.none, hintText: 'Текст задачи'),
+        decoration: const InputDecoration(
+            border: InputBorder.none, hintText: 'Текст задачи'),
         onEditingComplete: () => model?.saveTask(context),
         onChanged: (value) => model?.taskText = value);
   }
