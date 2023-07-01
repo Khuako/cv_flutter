@@ -4,9 +4,9 @@ import 'package:chat_app_project/pages/profile_page.dart';
 import 'package:chat_app_project/pages/search_page.dart';
 import 'package:chat_app_project/service/auth_service.dart';
 import 'package:chat_app_project/service/database_service.dart';
+import 'package:chat_app_project/widgets/group_tile.dart';
 import 'package:chat_app_project/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,6 +41,14 @@ class _HomePageState extends State<HomePage> {
     await DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
         .getUserGroups()
         .then((value) => groups = value);
+  }
+
+  String getId(String res) {
+    return res.substring(0, res.indexOf("_"));
+  }
+
+  String getName(String res) {
+    return res.substring(res.indexOf("_") + 1);
   }
 
   @override
@@ -178,14 +186,25 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  groupList() {
+  StreamBuilder groupList() {
     return StreamBuilder(
         stream: groups,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data["groups"] != null) {
               if (snapshot.data["groups"].length != 0) {
-                return Text('Hellooooo');
+                return ListView.builder(
+                  itemCount: snapshot.data['groups'].length,
+                  itemBuilder: (context, index) {
+                    int reverseIndex =
+                        snapshot.data['groups'].length - index - 1;
+                    return GroupTile(
+                        groupId: getId(snapshot.data['groups'][reverseIndex]),
+                        groupName:
+                            getName(snapshot.data['groups'][reverseIndex]),
+                        userName: snapshot.data['fullName']);
+                  },
+                );
               } else {
                 return noGroupsFoundWigdet();
               }
@@ -267,7 +286,9 @@ class _HomePageState extends State<HomePage> {
           ),
           actions: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).primaryColor),
               child: const Text(
@@ -277,7 +298,22 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).primaryColor),
-              onPressed: () {},
+              onPressed: () async {
+                if (groupName != "") {
+                  setState(() {
+                    _isLoading = true;
+                  });
+                  DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
+                      .createGroup(userName!,
+                          FirebaseAuth.instance.currentUser!.uid, groupName)
+                      .whenComplete(() {
+                    _isLoading = false;
+                  });
+                  Navigator.of(context).pop();
+                  showSnackBar(
+                      context, Colors.green, "Group Created Succesfully");
+                }
+              },
               child: const Text('CREATE'),
             ),
           ],

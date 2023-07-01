@@ -2,7 +2,6 @@ import 'package:chat_app_project/helper/helper_function.dart';
 import 'package:chat_app_project/pages/auth/login_page.dart';
 import 'package:chat_app_project/pages/home_page.dart';
 import 'package:chat_app_project/service/auth_service.dart';
-import 'package:chat_app_project/shared/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,4 @@
 import 'package:chat_app_project/pages/home_page.dart';
-import 'package:chat_app_project/pages/search_page.dart';
 import 'package:chat_app_project/service/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -122,6 +121,58 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ],
         ),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 100,
+          ),
+          Icon(
+            Icons.account_circle,
+            size: 200,
+            color: Colors.grey[700],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Full Name',
+                  style: TextStyle(fontSize: 16),
+                ),
+                Text(
+                  widget.userName,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Divider(
+              thickness: 1,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Email',
+                  style: TextStyle(fontSize: 16),
+                ),
+                Text(
+                  widget.email,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
