@@ -32,17 +32,17 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void getChatAndAdmin() async {
-    setState(() {
-      DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
-          .getChats(widget.groupId)
-          .then((value) {
-        chats = value;
-      });
-      DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
-          .getGroupAdmin(widget.groupId)
-          .then((value) {
-        admin = value;
-      });
+    await DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
+        .getChats(widget.groupId)
+        .then((value) {
+      setState(() {});
+      chats = value;
+    });
+    DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
+        .getGroupAdmin(widget.groupId)
+        .then((value) {
+      setState(() {});
+      admin = value;
     });
   }
 

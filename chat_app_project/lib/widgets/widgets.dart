@@ -15,12 +15,42 @@ const textInputDecoration = InputDecoration(
 );
 
 void nextScreen(context, page) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+  Navigator.push(
+    context,
+    PageRouteBuilder(
+      transitionDuration: Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        animation = CurvedAnimation(parent: animation, curve: Curves.linear);
+        return ScaleTransition(
+          scale: animation,
+          alignment: Alignment.centerLeft,
+          child: child,
+        );
+      },
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return page;
+      },
+    ),
+  );
 }
 
 void nextScreenReplace(context, page) {
   Navigator.pushReplacement(
-      context, MaterialPageRoute(builder: (context) => page));
+    context,
+    PageRouteBuilder(
+      transitionDuration: Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        animation = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return page;
+      },
+    ),
+  );
 }
 
 void showSnackBar(context, color, message) {

@@ -18,14 +18,16 @@ class MessageTile extends StatefulWidget {
 class _MessageTileState extends State<MessageTile> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(seconds: 1),
       alignment: widget.sendByMe ? Alignment.centerRight : Alignment.centerLeft,
       padding: EdgeInsets.only(
           top: 4,
           bottom: 4,
           left: widget.sendByMe ? 0 : 24,
           right: widget.sendByMe ? 24 : 0),
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(seconds: 1),
         margin: widget.sendByMe
             ? const EdgeInsets.only(left: 30)
             : const EdgeInsets.only(right: 30),
